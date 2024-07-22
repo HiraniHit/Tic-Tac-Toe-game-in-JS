@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/tic-tac-toe.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+    <title>Tic Tac Toe Game</title>
+</head>
+<body>
+    <h1><img class="game-img" src="./img/tic-tac-toe.png" alt="" width="25">Tic Tac T<img class="latter-img" src="./img/0.png" alt="" width="30">e</h1>
+    <div class="container">
+        <div class="main">
+            <div class="row">
+                <div id="0" onclick="getDivValue(this)" class="col"></div>
+                <div id="1" onclick="getDivValue(this)" class="col"></div>
+                <div id="2" onclick="getDivValue(this)" class="col"></div>
+            </div>
+            <div class="row">
+                <div id="3" onclick="getDivValue(this)" class="col"></div>
+                <div id="4" onclick="getDivValue(this)" class="col"></div>
+                <div id="5" onclick="getDivValue(this)" class="col"></div>
+            </div>
+            <div class="row">
+                <div id="6" onclick="getDivValue(this)" class="col"></div>
+                <div id="7" onclick="getDivValue(this)" class="col"></div>
+                <div id="8" onclick="getDivValue(this)" class="col"></div>
+            </div>
+            <!-- <div><button onclick="restartGame()">Restart</button></div> -->
+        </div>
+
+        <div class="result-main hide">
+            <div class="result"></div>
+            <div class="draw"></div>
+            <button onclick="playAgainGame()">Play again</button>
+        </div>
+    </div>
+    <div class="rules">
+        <ul>
+            <h2>Rules</h2>
+            <li>Alternating turns, place a game piece in one of the spaces on the 3 X 3 board
+                with the goal of getting three in a row.</li>
+            <li>The player to get three in a row first wins</li>
+            <li>No one is don't able to make three in  a row it called a Draw</li>
+        </ul>
+    </div>
+    
+</body>
+<script src="index.js"></script>
+</html>
