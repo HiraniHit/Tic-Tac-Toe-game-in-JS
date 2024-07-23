@@ -13,6 +13,7 @@ function choosePlayer(player = "X") {
 
 function playAgainGame() {
     array.fill(undefined);
+    arrayForComputer.fill(undefined)
     game.classList.remove("hide");
     resultPage.classList.add("hide");
     document
@@ -47,7 +48,6 @@ function isWinner() {
     ) {
         displayWinner(`${currentSymbol}`);
     } else {
-        console.log(array.every((item) => item == undefined));
         if (!array.includes(undefined)) {
             displayDraw(`${currentSymbol}`);
         }
@@ -73,6 +73,7 @@ function restartGame() {
 
 // computer
 
+let computerGame = document.querySelector(".ganrate-2")
 let currentSymbolForComputer;
 let arrayForComputer = Array(9);
 let computerCol = document.querySelectorAll(`.col-1`);
@@ -87,32 +88,39 @@ function playWithComputer() {
 }
 
 function displayWinnerForComputer(result) {
-    game.classList.add("hide");
+    computerGame.classList.add("hide");
     resultPage.classList.remove("hide");
     resultDiv.style.color = "green";
     resultDiv.textContent = `winner is ${result}`;
+    document
+        .querySelectorAll(".col-1")
+        .forEach((value) => (value.textContent = ""));
 }
 
 function displayDrawForComputer() {
-    game.classList.add("hide");
+    computerGame.classList.add("hide");
     resultPage.classList.remove("hide");
     resultDiv.style.color = "white";
     resultDiv.textContent = `Game is Draw !!!`;
+    document
+    .querySelectorAll(".col-1")
+    .forEach((value) => (value.textContent = ""));
 }
 
 
 function isWinnerForComputer() {
     if (
-        (arrayForComputer[0] != null && arrayForComputer[0] == arrayForComputer[1] && arrayForComputer[1] == arrayForComputer[2]) ||
-        (arrayForComputer[3] != null && arrayForComputer[3] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[5]) ||
-        (arrayForComputer[6] != null && arrayForComputer[6] == arrayForComputer[7] && arrayForComputer[7] == arrayForComputer[8]) ||
-        (arrayForComputer[0] != null && arrayForComputer[0] == arrayForComputer[3] && arrayForComputer[3] == arrayForComputer[6]) ||
-        (arrayForComputer[1] != null && arrayForComputer[1] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[7]) ||
-        (arrayForComputer[2] != null && arrayForComputer[2] == arrayForComputer[5] && arrayForComputer[5] == arrayForComputer[8]) ||
-        (arrayForComputer[0] != null && arrayForComputer[0] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[8]) ||
-        (arrayForComputer[2] != null && arrayForComputer[2] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[6])
+        (arrayForComputer[0] != undefined && arrayForComputer[0] == arrayForComputer[1] && arrayForComputer[1] == arrayForComputer[2]) ||
+        (arrayForComputer[3] != undefined && arrayForComputer[3] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[5]) ||
+        (arrayForComputer[6] != undefined && arrayForComputer[6] == arrayForComputer[7] && arrayForComputer[7] == arrayForComputer[8]) ||
+        (arrayForComputer[0] != undefined && arrayForComputer[0] == arrayForComputer[3] && arrayForComputer[3] == arrayForComputer[6]) ||
+        (arrayForComputer[1] != undefined && arrayForComputer[1] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[7]) ||
+        (arrayForComputer[2] != undefined && arrayForComputer[2] == arrayForComputer[5] && arrayForComputer[5] == arrayForComputer[8]) ||
+        (arrayForComputer[0] != undefined && arrayForComputer[0] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[8]) ||
+        (arrayForComputer[2] != undefined && arrayForComputer[2] == arrayForComputer[4] && arrayForComputer[4] == arrayForComputer[6])
     ) {
-        displayWinnerForComputer(`${currentSymbol}`);
+        console.log(currentSymbolForComputer);
+        displayWinnerForComputer(`${currentSymbolForComputer}`);
     } else {
         if (!arrayForComputer.includes(undefined)) {
             displayDrawForComputer();
@@ -128,8 +136,9 @@ function getDivValueForComputer(ComputerDiv) {
     if (ComputerDiv !== undefined) {
         arrayForComputer[ComputerDiv.id] = "X";
         ComputerDiv.textContent = "X";
+        currentSymbolForComputer = "X";
     }
-
+    isWinnerForComputer()
     console.log("col-clear", computerCol[number].textContent == "");
     console.log("col-undefined", arrayForComputer[number] == undefined);
     console.log();
@@ -137,11 +146,11 @@ function getDivValueForComputer(ComputerDiv) {
         if (computerCol[number].textContent == "") {
             computerCol[number].textContent = "O";
             arrayForComputer[number] = "O";
+            currentSymbolForComputer = "O"
 
             console.log("array", arrayForComputer);
             number;
             console.log("-");
-            isWinnerForComputer()
             
         } else {
             if(arrayForComputer.includes(undefined)){
@@ -155,6 +164,7 @@ function getDivValueForComputer(ComputerDiv) {
        }
         return;
     }
+    isWinnerForComputer()
 }
 
 function restartGameForComputer() {
