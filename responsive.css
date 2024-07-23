@@ -1,0 +1,45 @@
+@media (max-width:1024px) {
+    .rules {
+        width: 60%;
+    }
+    .col ,.col-1{
+        height: 100px;
+        width: 100px;
+    }
+    .container{
+        height: 600px;
+    }
+}
+
+@media (max-width:768px) {
+    .rules {
+        width: 50%;
+    }
+    .container{
+        height: 550px;
+    }
+}
+@media (max-width:425px) {
+    .rules {
+        width: 70%;
+    }
+    .col ,.col-1{
+        height: 80px;
+        width: 80px;
+    }
+}
+@media (max-width:325px) {
+    .rules {
+        width: 70%;
+    }
+    .col ,.col-1{
+        height: 70px;
+        width: 70px;
+    }
+    .container{
+        height: 500px;
+    }
+    .btn > button{
+        padding: 6px 12px;
+    }
+}
