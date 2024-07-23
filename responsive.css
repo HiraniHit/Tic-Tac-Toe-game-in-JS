@@ -26,6 +26,13 @@
     .col ,.col-1{
         height: 80px;
         width: 80px;
+        font-size: 30px;
+    }
+    .result {
+        padding: 50px 50px 80px 50px;
+        font-size: 30px;
+        height: auto;
+        width: fit-content;
     }
 }
 @media (max-width:325px) {
