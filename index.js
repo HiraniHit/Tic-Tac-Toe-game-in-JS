@@ -62,7 +62,7 @@ function getDivValue(div) {
     array[id] = currentSymbol;
     div.textContent = currentSymbol;
     isWinner();
-    
+
     currentSymbol = currentSymbol == "X" ? "O" : "X";
 }
 
@@ -151,33 +151,35 @@ function isWinnerForComputer() {
 function getDivValueForComputer(ComputerDiv) {
     let number = Math.floor(Math.random() * 9);
     
-    if (ComputerDiv !== undefined) {
+    if (ComputerDiv) {
         arrayForComputer[ComputerDiv.id] = "X";
         ComputerDiv.textContent = "X";
         currentSymbolForComputer = "X";
     }
     isWinnerForComputer();
-    if (isWinnerForComputer()) {
-        if (arrayForComputer[number] == undefined) {
-            if (computerCol[number].textContent == "") {
-                computerCol[number].textContent = "O";
-                arrayForComputer[number] = "O";
-                currentSymbolForComputer = "O";
-                number;
+    setTimeout(()=>{
+        if (isWinnerForComputer()) {
+            if (arrayForComputer[number] == undefined) {
+                if (computerCol[number].textContent == "") {
+                    computerCol[number].textContent = "O";
+                    arrayForComputer[number] = "O";
+                    currentSymbolForComputer = "O";
+                    number;
+                } else {
+                    if (arrayForComputer.includes(undefined)) {
+                        getDivValueForComputer();
+                    }
+                    return;
+                }
             } else {
                 if (arrayForComputer.includes(undefined)) {
                     getDivValueForComputer();
                 }
                 return;
             }
-        } else {
-            if (arrayForComputer.includes(undefined)) {
-                getDivValueForComputer();
-            }
-            return;
         }
-    }
-    isWinnerForComputer();
+        isWinnerForComputer();
+    },700)
 }
 
 function restartGameForComputer() {
