@@ -145,7 +145,6 @@ function isWinnerForComputer() {
         }
         return true;
     }
-    return false;
 }
 
 function getDivValueForComputer(ComputerDiv) {
