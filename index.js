@@ -151,6 +151,18 @@ function isWinnerForComputer() {
 function brainOfComputer() {
     if (arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[1] && computerCol[2].textContent == ""){
         return 2
+    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[4] && computerCol[8].textContent == ""){
+        return 8
+    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[8] && computerCol[4].textContent == ""){
+        return 4
+    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[8] && computerCol[0].textContent == ""){
+        return 0
+    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[4] && computerCol[6].textContent == ""){
+        return 6
+    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[6] && computerCol[2].textContent == ""){
+        return 2
+    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[6] && computerCol[4].textContent == ""){
+        return 4
     }else if(arrayForComputer[1] != undefined && arrayForComputer[1] === arrayForComputer[2] && computerCol[0].textContent == ""){
         return 0
     }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[2] && computerCol[1].textContent == ""){
@@ -185,18 +197,6 @@ function brainOfComputer() {
         return 2
     }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[8] && computerCol[5].textContent == ""){
         return 5
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[4] && computerCol[8].textContent == ""){
-        return 8
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[8] && computerCol[4].textContent == ""){
-        return 4
-    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[8] && computerCol[0].textContent == ""){
-        return 0
-    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[4] && computerCol[6].textContent == ""){
-        return 6
-    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[6] && computerCol[2].textContent == ""){
-        return 2
-    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[6] && computerCol[4].textContent == ""){
-        return 4
     }
     return false;
 }
