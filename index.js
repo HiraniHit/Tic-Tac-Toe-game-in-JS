@@ -81,6 +81,7 @@ let computerGame = document.querySelector(".ganrate-2");
 let currentSymbolForComputer = "O";
 let arrayForComputer = Array(9);
 let computerCol = document.querySelectorAll(`.col-1`);
+let computerPushNumber;
 
 function playWithComputer() {
     document.querySelector(".main").classList.toggle("hide");
@@ -217,17 +218,19 @@ function getDivValueForComputer(ComputerDiv) {
             if (arrayForComputer[number] == undefined || null) {
                 if (computerCol[number].textContent == "") {
                     if (typeof brainOfComputer() == "number") {
+                        computerPushNumber = brainOfComputer()
                         computerCol[brainOfComputer()].textContent = "O";
-                        arrayForComputer[brainOfComputer()] = "O";
-                        arrayForComputer[brainOfComputer()] = "O";
+                        arrayForComputer[computerPushNumber] = "O";
                         currentSymbolForComputer = "O";
                         console.log(arrayForComputer);
-                        return;
+                        console.log("inside");
+                        
                     } else {
                         computerCol[number].textContent = "O";
                         arrayForComputer[number] = "O";
                         currentSymbolForComputer = "O";
                         number;
+                        console.log(arrayForComputer);
                     }
                     isWinnerForComputer()
                 } else {
