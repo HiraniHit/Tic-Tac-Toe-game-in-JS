@@ -31,13 +31,14 @@ body {
 }
 .sub-img {
     position: absolute;
-    height: 300px;
-    width: 300px;
-    top: 40%;
+    width: 90%;
+    height: 850px;
+    top: 4rem;
     left: 100px;
     background-image: url("./img/tic-tac-toe-1674071_1280.png");
     background-size: cover;
-    opacity: 0.7;
+    opacity: 0.2;
+    z-index: -1;
 }
 ::selection {
     background-color: black;
@@ -50,9 +51,9 @@ body {
     justify-content: center;
     align-items: center;
 }
-.main {
+/* .main {
     background-color: rgb(20, 20, 20);
-}
+} */
 .latter-img {
     margin-bottom: -10px;
     margin: 0 -5px -9px -7px;

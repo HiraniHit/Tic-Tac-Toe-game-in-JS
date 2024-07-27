@@ -3,9 +3,6 @@ setTimeout(()=>{
     document.querySelector(".home-page").classList.remove("hide")
 },2000)
 
-
-
-
 let array = Array(9);
 let game = document.querySelector(".main");
 let resultPage = document.querySelector(".result-main");
