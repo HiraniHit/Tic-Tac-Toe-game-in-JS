@@ -5,6 +5,7 @@ let resultDiv = document.querySelector(".result");
 let drawDiv = document.querySelector(".draw");
 let currentSelectedPlayer = document.querySelector(".select").value;
 let currentSymbol = currentSelectedPlayer || "X";
+let allDiv = document.querySelectorAll(".col");
 
 function choosePlayer(player = "X") {
     restartGame();
@@ -17,9 +18,8 @@ function playAgainGame() {
     game.classList.remove("hide");
     resultPage.classList.add("hide");
     currentSymbolForComputer = "O";
-    document
-        .querySelectorAll(".col")
-        .forEach((value) => (value.textContent = ""));
+    allDiv.forEach((value) => (value.textContent = ""));
+    allDiv.forEach((value) => (value.style.backgroundColor = ""));
 }
 
 function displayWinner(result) {
@@ -62,6 +62,15 @@ function getDivValue(div) {
 
     array[id] = currentSymbol;
     div.textContent = currentSymbol;
+    if (currentSymbol == "X") {
+        div.style.backgroundColor = "rgb(199, 220, 255)";
+        div.style.color = "black";
+    }
+    if (currentSymbol == "O") {
+        div.style.backgroundColor = "rgb(229, 199, 255)";
+        div.style.color = "black";
+    }
+
     isWinner();
 
     currentSymbol = currentSymbol == "X" ? "O" : "X";
@@ -70,18 +79,19 @@ function getDivValue(div) {
 function restartGame() {
     currentSymbol = currentSelectedPlayer;
     array.fill(undefined);
-    document
-        .querySelectorAll(".col")
-        .forEach((value) => (value.textContent = ""));
+    allDiv.forEach((value) => (value.textContent = ""));
+    allDiv.forEach((value) => (value.style.backgroundColor = ""));
 }
 
-// computer
+//Computer Player
 
 let computerGame = document.querySelector(".ganrate-2");
 let currentSymbolForComputer = "O";
 let arrayForComputer = Array(9);
 let computerCol = document.querySelectorAll(`.col-1`);
 let computerPushNumber;
+
+console.log(computerCol);
 
 function playWithComputer() {
     document.querySelector(".main").classList.toggle("hide");
@@ -149,54 +159,150 @@ function isWinnerForComputer() {
     }
 }
 function brainOfComputer() {
-    if (arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[1] && computerCol[2].textContent == ""){
-        return 2
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[4] && computerCol[8].textContent == ""){
-        return 8
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[8] && computerCol[4].textContent == ""){
-        return 4
-    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[8] && computerCol[0].textContent == ""){
-        return 0
-    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[4] && computerCol[6].textContent == ""){
-        return 6
-    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[6] && computerCol[2].textContent == ""){
-        return 2
-    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[6] && computerCol[4].textContent == ""){
-        return 4
-    }else if(arrayForComputer[1] != undefined && arrayForComputer[1] === arrayForComputer[2] && computerCol[0].textContent == ""){
-        return 0
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[2] && computerCol[1].textContent == ""){
-        return 1
-    }else if(arrayForComputer[3] != undefined && arrayForComputer[3] === arrayForComputer[4] && computerCol[5].textContent == ""){
-        return 5
-    }else if(arrayForComputer[3] != undefined && arrayForComputer[3] === arrayForComputer[5] && computerCol[4].textContent == ""){
-        return 4
-    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[5] && computerCol[3].textContent == ""){
-        return 3
-    }else if(arrayForComputer[6] != undefined && arrayForComputer[6] === arrayForComputer[7] && computerCol[8].textContent == ""){
-        return 8
-    }else if(arrayForComputer[7] != undefined && arrayForComputer[7] === arrayForComputer[8] && computerCol[6].textContent == ""){
-        return 6
-    }else if(arrayForComputer[6] != undefined && arrayForComputer[6] === arrayForComputer[8] && computerCol[7].textContent == ""){
-        return 7
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[3] && computerCol[6].textContent == ""){
-        return 6
-    }else if(arrayForComputer[0] != undefined && arrayForComputer[0] === arrayForComputer[6] && computerCol[3].textContent == ""){
-        return 3
-    }else if(arrayForComputer[3] != undefined && arrayForComputer[3] === arrayForComputer[6] && computerCol[0].textContent == ""){
-        return 0
-    }else if(arrayForComputer[1] != undefined && arrayForComputer[1] === arrayForComputer[4] && computerCol[7].textContent == ""){
-        return 7
-    }else if(arrayForComputer[1] != undefined && arrayForComputer[1] === arrayForComputer[7] && computerCol[4].textContent == ""){
-        return 4
-    }else if(arrayForComputer[4] != undefined && arrayForComputer[4] === arrayForComputer[7] && computerCol[1].textContent == ""){
-        return 1
-    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[5] && computerCol[8].textContent == ""){
-        return 8
-    }else if(arrayForComputer[5] != undefined && arrayForComputer[5] === arrayForComputer[8] && computerCol[2].textContent == ""){
-        return 2
-    }else if(arrayForComputer[2] != undefined && arrayForComputer[2] === arrayForComputer[8] && computerCol[5].textContent == ""){
-        return 5
+    if (
+        arrayForComputer[0] != undefined &&
+        arrayForComputer[0] === arrayForComputer[1] &&
+        computerCol[2].textContent == ""
+    ) {
+        return 2;
+    } else if (
+        arrayForComputer[0] != undefined &&
+        arrayForComputer[0] === arrayForComputer[4] &&
+        computerCol[8].textContent == ""
+    ) {
+        return 8;
+    } else if (
+        arrayForComputer[0] != undefined &&
+        arrayForComputer[0] === arrayForComputer[8] &&
+        computerCol[4].textContent == ""
+    ) {
+        return 4;
+    } else if (
+        arrayForComputer[4] != undefined &&
+        arrayForComputer[4] === arrayForComputer[8] &&
+        computerCol[0].textContent == ""
+    ) {
+        return 0;
+    } else if (
+        arrayForComputer[2] != undefined &&
+        arrayForComputer[2] === arrayForComputer[4] &&
+        computerCol[6].textContent == ""
+    ) {
+        return 6;
+    } else if (
+        arrayForComputer[4] != undefined &&
+        arrayForComputer[4] === arrayForComputer[6] &&
+        computerCol[2].textContent == ""
+    ) {
+        return 2;
+    } else if (
+        arrayForComputer[2] != undefined &&
+        arrayForComputer[2] === arrayForComputer[6] &&
+        computerCol[4].textContent == ""
+    ) {
+        return 4;
+    } else if (
+        arrayForComputer[1] != undefined &&
+        arrayForComputer[1] === arrayForComputer[2] &&
+        computerCol[0].textContent == ""
+    ) {
+        return 0;
+    } else if (
+        arrayForComputer[0] != undefined &&
+        arrayForComputer[0] === arrayForComputer[2] &&
+        computerCol[1].textContent == ""
+    ) {
+        return 1;
+    } else if (
+        arrayForComputer[3] != undefined &&
+        arrayForComputer[3] === arrayForComputer[4] &&
+        computerCol[5].textContent == ""
+    ) {
+        return 5;
+    } else if (
+        arrayForComputer[3] != undefined &&
+        arrayForComputer[3] === arrayForComputer[5] &&
+        computerCol[4].textContent == ""
+    ) {
+        return 4;
+    } else if (
+        arrayForComputer[4] != undefined &&
+        arrayForComputer[4] === arrayForComputer[5] &&
+        computerCol[3].textContent == ""
+    ) {
+        return 3;
+    } else if (
+        arrayForComputer[6] != undefined &&
+        arrayForComputer[6] === arrayForComputer[7] &&
+        computerCol[8].textContent == ""
+    ) {
+        return 8;
+    } else if (
+        arrayForComputer[7] != undefined &&
+        arrayForComputer[7] === arrayForComputer[8] &&
+        computerCol[6].textContent == ""
+    ) {
+        return 6;
+    } else if (
+        arrayForComputer[6] != undefined &&
+        arrayForComputer[6] === arrayForComputer[8] &&
+        computerCol[7].textContent == ""
+    ) {
+        return 7;
+    } else if (
+        arrayForComputer[0] != undefined &&
+        arrayForComputer[0] === arrayForComputer[3] &&
+        computerCol[6].textContent == ""
+    ) {
+        return 6;
+    } else if (
+        arrayForComputer[0] != undefined &&
+        arrayForComputer[0] === arrayForComputer[6] &&
+        computerCol[3].textContent == ""
+    ) {
+        return 3;
+    } else if (
+        arrayForComputer[3] != undefined &&
+        arrayForComputer[3] === arrayForComputer[6] &&
+        computerCol[0].textContent == ""
+    ) {
+        return 0;
+    } else if (
+        arrayForComputer[1] != undefined &&
+        arrayForComputer[1] === arrayForComputer[4] &&
+        computerCol[7].textContent == ""
+    ) {
+        return 7;
+    } else if (
+        arrayForComputer[1] != undefined &&
+        arrayForComputer[1] === arrayForComputer[7] &&
+        computerCol[4].textContent == ""
+    ) {
+        return 4;
+    } else if (
+        arrayForComputer[4] != undefined &&
+        arrayForComputer[4] === arrayForComputer[7] &&
+        computerCol[1].textContent == ""
+    ) {
+        return 1;
+    } else if (
+        arrayForComputer[2] != undefined &&
+        arrayForComputer[2] === arrayForComputer[5] &&
+        computerCol[8].textContent == ""
+    ) {
+        return 8;
+    } else if (
+        arrayForComputer[5] != undefined &&
+        arrayForComputer[5] === arrayForComputer[8] &&
+        computerCol[2].textContent == ""
+    ) {
+        return 2;
+    } else if (
+        arrayForComputer[2] != undefined &&
+        arrayForComputer[2] === arrayForComputer[8] &&
+        computerCol[5].textContent == ""
+    ) {
+        return 5;
     }
     return false;
 }
@@ -218,13 +324,12 @@ function getDivValueForComputer(ComputerDiv) {
             if (arrayForComputer[number] == undefined || null) {
                 if (computerCol[number].textContent == "") {
                     if (typeof brainOfComputer() == "number") {
-                        computerPushNumber = brainOfComputer()
+                        computerPushNumber = brainOfComputer();
                         computerCol[brainOfComputer()].textContent = "O";
                         arrayForComputer[computerPushNumber] = "O";
                         currentSymbolForComputer = "O";
                         console.log(arrayForComputer);
                         console.log("inside");
-                        
                     } else {
                         computerCol[number].textContent = "O";
                         arrayForComputer[number] = "O";
@@ -232,7 +337,7 @@ function getDivValueForComputer(ComputerDiv) {
                         number;
                         console.log(arrayForComputer);
                     }
-                    isWinnerForComputer()
+                    isWinnerForComputer();
                 } else {
                     if (arrayForComputer.includes(undefined)) {
                         getDivValueForComputer();
@@ -257,4 +362,3 @@ function restartGameForComputer() {
         .querySelectorAll(".col-1")
         .forEach((value) => (value.textContent = ""));
 }
-
