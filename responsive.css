@@ -1,23 +1,24 @@
-@media (max-width:1300px) {
-    .sub-img{
+@media (max-width: 1300px) {
+    .sub-img {
         width: 150px;
         height: 150px;
     }
 }
 
-@media (max-width:1024px) {
+@media (max-width: 1024px) {
     .rules {
         width: 60%;
     }
-    .col ,.col-1{
+    .col,
+    .col-1 {
         height: 100px;
         width: 100px;
     }
-    .container{
+    .container {
         height: 600px;
     }
-    .sub-img{
-        top: 74%;
+    .sub-img {
+        top: 78%;
         left: 50%;
         width: 150px;
         height: 150px;
@@ -25,21 +26,30 @@
         z-index: -1;
         opacity: 0.3;
     }
-
 }
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .rules {
         width: 50%;
     }
-    .container{
+    .container {
         height: 550px;
     }
+    .loading-div > h1 {
+        width: 100vw;
+        font-size: 25px;
+    }
+    .loading > img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 }
-@media (max-width:425px) {
+@media (max-width: 425px) {
     .rules {
         width: 70%;
     }
-    .col ,.col-1{
+    .col,
+    .col-1 {
         height: 80px;
         width: 80px;
         font-size: 30px;
@@ -50,19 +60,25 @@
         height: auto;
         width: fit-content;
     }
+    .loading > img{
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
 }
-@media (max-width:325px) {
+@media (max-width: 325px) {
     .rules {
         width: 70%;
     }
-    .col ,.col-1{
+    .col,
+    .col-1 {
         height: 70px;
         width: 70px;
     }
-    .container{
+    .container {
         height: 500px;
     }
-    .btn > button{
+    .btn > button {
         padding: 6px 12px;
     }
 }

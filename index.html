@@ -1,112 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./img/tic-tac-toe.png" type="image/x-icon">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="responsive.css">
-    <title>Tic Tac Toe Game</title>
-</head>
-<body>
-    <div class="sub-img"></div>
-    <h1><img class="game-img" src="./img/tic-tac-toe.png" alt="" width="25">Tic Tac T<img class="latter-img" src="./img/0.png" alt="" width="30">e</h1>
-    <div class="container">
-        <div class="main">
-            <div class="score-main">
-                <div>
-                    <h3>Score X </h3>
-                    <p class="manual-score-x">0</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="shortcut icon"
+            href="./img/tic-tac-toe.png"
+            type="image/x-icon"
+        />
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="responsive.css" />
+        <title>Tic Tac Toe Game</title>
+    </head>
+    <body>
+      <div class="loading">
+        <img src="./img/tic-tac-toe-1674071_1280.png" alt="" srcset="">
+        <div class="loading-div">
+            <h1>
+                <img
+                    class="game-img"
+                    src="./img/tic-tac-toe.png"
+                    alt=""
+                    width="25"
+                />Tic Tac T<img
+                    class="latter-img"
+                    src="./img/0.png"
+                    alt=""
+                    width="30"
+                />e
+            </h1>
+        </div>
+      </div>
+        <div class="home-page hide">
+            <div class="sub-img"></div>
+        <h1>
+            <img
+                class="game-img"
+                src="./img/tic-tac-toe.png"
+                alt=""
+                width="25"
+            />Tic Tac T<img
+                class="latter-img"
+                src="./img/0.png"
+                alt=""
+                width="30"
+            />e
+        </h1>
+        <div class="container">
+            <div class="main">
+                <div class="score-main">
+                    <div>
+                        <h3>Score X</h3>
+                        <p class="manual-score-x">0</p>
+                    </div>
+                    <div>
+                        <h3>Score O</h3>
+                        <p class="manual-score-o">0</p>
+                    </div>
+                    <div>
+                        <h3>Draw</h3>
+                        <p class="manual-score-draw">0</p>
+                    </div>
                 </div>
-                <div>
-                    <h3>Score O </h3>
-                    <p class="manual-score-o">0</p>
+                <div class="row">
+                    <div id="0" onclick="getDivValue(this)" class="col"></div>
+                    <div id="1" onclick="getDivValue(this)" class="col"></div>
+                    <div id="2" onclick="getDivValue(this)" class="col"></div>
                 </div>
-                <div>
-                    <h3>Draw </h3>
-                    <p class="manual-score-draw">0</p>
+                <div class="row">
+                    <div id="3" onclick="getDivValue(this)" class="col"></div>
+                    <div id="4" onclick="getDivValue(this)" class="col"></div>
+                    <div id="5" onclick="getDivValue(this)" class="col"></div>
+                </div>
+                <div class="row">
+                    <div id="6" onclick="getDivValue(this)" class="col"></div>
+                    <div id="7" onclick="getDivValue(this)" class="col"></div>
+                    <div id="8" onclick="getDivValue(this)" class="col"></div>
+                </div>
+                <div class="btn">
+                    <button class="computer-btn" onclick="playWithComputer()">
+                        Manual
+                    </button>
+                    <select
+                        class="select"
+                        name="player"
+                        value="player"
+                        onclick="choosePlayer(value)"
+                    >
+                        <option value="X">X</option>
+                        <option value="O">O</option>
+                    </select>
+                    <button onclick="restartGame()">Restart</button>
                 </div>
             </div>
-            <div class="row">
-                <div id="0" onclick="getDivValue(this)" class="col"></div>
-                <div id="1" onclick="getDivValue(this)" class="col"></div>
-                <div id="2" onclick="getDivValue(this)" class="col"></div>
+
+            <!-- computer -->
+
+            <div class="generate hide">
+                <div class="score-main">
+                    <div>
+                        <h3>Score X</h3>
+                        <p class="score-x-for-player">0</p>
+                    </div>
+                    <div>
+                        <h3>Computer</h3>
+                        <p class="score-for-computer">0</p>
+                    </div>
+                    <div>
+                        <h3>Draw</h3>
+                        <p class="score-draw-for-computer">0</p>
+                    </div>
+                </div>
+                <div class="row-1">
+                    <div
+                        id="0"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                    <div
+                        id="1"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                    <div
+                        id="2"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                </div>
+                <div class="row-1">
+                    <div
+                        id="3"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                    <div
+                        id="4"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                    <div
+                        id="5"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                </div>
+                <div class="row-1">
+                    <div
+                        id="6"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                    <div
+                        id="7"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                    <div
+                        id="8"
+                        onclick="getDivValueForComputer(this)"
+                        class="col-1"
+                    ></div>
+                </div>
+                <div class="btn">
+                    <button class="computer-btn" onclick="playWithComputer()">
+                        With computer
+                    </button>
+                    <button onclick="restartGameForComputer()">Restart</button>
+                </div>
             </div>
-            <div class="row">
-                <div id="3" onclick="getDivValue(this)" class="col"></div>
-                <div id="4" onclick="getDivValue(this)" class="col"></div>
-                <div id="5" onclick="getDivValue(this)" class="col"></div>
-            </div>
-            <div  class="row">
-                <div id="6" onclick="getDivValue(this)" class="col"></div>
-                <div id="7" onclick="getDivValue(this)" class="col"></div>
-                <div id="8" onclick="getDivValue(this)" class="col"></div>
-            </div>
-            <div class="btn">
-                <button class="computer-btn"  onclick="playWithComputer()">Manual</button>
-                <select class="select" name="player" value="player" onclick="choosePlayer(value)">
-                    <option value="X">X</option>
-                    <option value="O">O</option>
-                </select>
-                <button onclick="restartGame()">Restart</button>
+
+            <div class="result-main hide">
+                <div class="result"></div>
+                <button onclick="playAgainGame()">Play again</button>
             </div>
         </div>
-
-
-        <!-- computer -->
-
-
-        <div class="generate hide">
-            <div class="score-main">
-                <div>
-                    <h3>Score X </h3>
-                    <p class="score-x-for-player">0</p>
-                </div>
-                <div>
-                    <h3>Computer</h3>
-                    <p class="score-for-computer">0</p>
-                </div>
-                <div>
-                    <h3>Draw </h3>
-                    <p class="score-draw-for-computer">0</p>
-                </div>
-            </div>
-            <div class="row-1">
-                <div id="0" onclick="getDivValueForComputer(this)" class="col-1"></div>
-                <div id="1" onclick="getDivValueForComputer(this)" class="col-1"></div>
-                <div id="2" onclick="getDivValueForComputer(this)" class="col-1"></div>
-            </div>
-            <div class="row-1">
-                <div id="3" onclick="getDivValueForComputer(this)" class="col-1"></div>
-                <div id="4" onclick="getDivValueForComputer(this)" class="col-1"></div>
-                <div id="5" onclick="getDivValueForComputer(this)" class="col-1"></div>
-            </div>
-            <div  class="row-1">
-                <div id="6" onclick="getDivValueForComputer(this)" class="col-1"></div>
-                <div id="7" onclick="getDivValueForComputer(this)" class="col-1"></div>
-                <div id="8" onclick="getDivValueForComputer(this)" class="col-1"></div>
-            </div>
-            <div class="btn">
-                <button class="computer-btn" onclick="playWithComputer()">With computer</button>
-                <button onclick="restartGameForComputer()">Restart</button>
-            </div>
+        <div class="rules">
+            <ul>
+                <h2>Rules</h2>
+                <li>The player to get three in a row first wins</li>
+                <li>
+                    No one is don't able to make three in a row it called a Draw
+                </li>
+                <li>By Default Player is X and one by one change the player</li>
+                <li>With Computer you always X</li>
+            </ul>
         </div>
-
-        <div class="result-main hide">
-            <div class="result"></div>
-            <button onclick="playAgainGame()">Play again</button>
         </div>
-    </div>
-    <div class="rules">
-        <ul>
-            <h2>Rules</h2>
-            <li>The player to get three in a row first wins</li>
-            <li>No one is don't able to make three in  a row it called a Draw</li>
-            <li>By Default Player is X and one by one change the player</li>
-            <li>With Computer you always X</li>
-        </ul>
-    </div>
-    
-</body>
-<script src="index.js"></script>
+    </body>
+    <script src="index.js"></script>
 </html>

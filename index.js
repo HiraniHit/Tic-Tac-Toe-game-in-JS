@@ -1,3 +1,11 @@
+setTimeout(()=>{
+    document.querySelector(".loading").classList.add("hide")
+    document.querySelector(".home-page").classList.remove("hide")
+},2000)
+
+
+
+
 let array = Array(9);
 let game = document.querySelector(".main");
 let resultPage = document.querySelector(".result-main");
@@ -126,7 +134,9 @@ function playWithComputer() {
     }`;
 }
 function clearBoard() {
-    document.querySelectorAll(".col-1").forEach((value) => (value.textContent = ""));
+    document
+        .querySelectorAll(".col-1")
+        .forEach((value) => (value.textContent = ""));
     arrayForComputer.fill(undefined);
 }
 function displayWinnerForComputer(result) {
@@ -145,7 +155,7 @@ function displayWinnerForComputer(result) {
     document
         .querySelectorAll(".col-1")
         .forEach((value) => (value.textContent = ""));
-        clearBoard()
+    clearBoard();
 }
 
 function displayDrawForComputer() {
@@ -159,7 +169,7 @@ function displayDrawForComputer() {
 
     scoreDrawCountForComputer += 1;
     scoreDrawForComputer.innerHTML = scoreDrawCountForComputer;
-    clearBoard()
+    clearBoard();
 }
 
 function isWinnerForComputer() {
@@ -196,7 +206,7 @@ function isWinnerForComputer() {
             displayDrawForComputer();
             return true;
         }
-        return false
+        return false;
     }
 }
 function brainOfComputer() {
@@ -358,8 +368,8 @@ function getDivValueForComputer(ComputerDiv) {
             currentSymbolForComputer = "X";
         }
     }
-    if(isWinnerForComputer() == true){
-        return ;
+    if (isWinnerForComputer() == true) {
+        return;
     }
     setTimeout(() => {
         if (arrayForComputer[number] == undefined || null) {
@@ -394,7 +404,7 @@ function getDivValueForComputer(ComputerDiv) {
 }
 
 function restartGameForComputer() {
-    currentSymbolForComputer = "O"; 
+    currentSymbolForComputer = "O";
     clearBoard();
     computerGame.classList.remove("hide");
     resultPage.classList.add("hide");
