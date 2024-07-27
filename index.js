@@ -7,6 +7,13 @@ let currentSelectedPlayer = document.querySelector(".select").value;
 let currentSymbol = currentSelectedPlayer || "X";
 let allDiv = document.querySelectorAll(".col");
 
+let scoreX = document.querySelector(".manual-score-x");
+let scoreO = document.querySelector(".manual-score-o");
+let scoreDraw = document.querySelector(".manual-score-draw");
+let scoreXCount = 0;
+let scoreOCount = 0;
+let scoreDrawCount = 0;
+
 function choosePlayer(player = "X") {
     restartGame();
     currentSymbol = player;
@@ -27,6 +34,14 @@ function displayWinner(result) {
     resultPage.classList.remove("hide");
     resultDiv.style.color = "green";
     resultDiv.textContent = `winner is ${result}`;
+    if (result == "X") {
+        scoreXCount += 1;
+        scoreX.innerHTML = scoreXCount;
+    }
+    if (result == "O") {
+        scoreOCount += 1;
+        scoreO.innerHTML = scoreOCount;
+    }
 }
 
 function displayDraw() {
@@ -34,6 +49,8 @@ function displayDraw() {
     resultPage.classList.remove("hide");
     resultDiv.style.color = "white";
     resultDiv.textContent = `Game is Draw !!!`;
+    scoreDrawCount += 1;
+    scoreDraw.innerHTML = scoreDrawCount;
 }
 
 function isWinner() {
@@ -85,23 +102,42 @@ function restartGame() {
 
 //Computer Player
 
-let computerGame = document.querySelector(".ganrate-2");
+let computerGame = document.querySelector(".generate");
 let currentSymbolForComputer = "O";
 let arrayForComputer = Array(9);
 let computerCol = document.querySelectorAll(`.col-1`);
+console.log(computerCol[5]);
 let computerPushNumber;
+
+let scoreXForComputer = document.querySelector(".score-x-for-player");
+let scoreOForComputer = document.querySelector(".score-for-computer");
+let scoreDrawForComputer = document.querySelector(".score-draw-for-computer");
+let scoreXCountForComputer = 0;
+let scoreOCountForComputer = 0;
+let scoreDrawCountForComputer = 0;
 
 console.log(computerCol);
 
 function playWithComputer() {
     document.querySelector(".main").classList.toggle("hide");
-    document.querySelector(".ganrate-2").classList.toggle("hide");
+    document.querySelector(".generate").classList.toggle("hide");
     document.querySelector(".computer-btn").textContent = `${
         "With computer" ? "Manual" : "With computer"
     }`;
 }
-
+function clearBoard() {
+    document.querySelectorAll(".col-1").forEach((value) => (value.textContent = ""));
+    arrayForComputer.fill(undefined);
+}
 function displayWinnerForComputer(result) {
+    if (result === "X") {
+        scoreXCountForComputer += 1;
+        scoreXForComputer.innerHTML = scoreXCountForComputer;
+    }
+    if (result === "O") {
+        scoreOCountForComputer += 1;
+        scoreOForComputer.innerHTML = scoreOCountForComputer;
+    }
     computerGame.classList.add("hide");
     resultPage.classList.remove("hide");
     resultDiv.style.color = "green";
@@ -109,7 +145,7 @@ function displayWinnerForComputer(result) {
     document
         .querySelectorAll(".col-1")
         .forEach((value) => (value.textContent = ""));
-    return;
+        clearBoard()
 }
 
 function displayDrawForComputer() {
@@ -120,6 +156,10 @@ function displayDrawForComputer() {
     document
         .querySelectorAll(".col-1")
         .forEach((value) => (value.textContent = ""));
+
+    scoreDrawCountForComputer += 1;
+    scoreDrawForComputer.innerHTML = scoreDrawCountForComputer;
+    clearBoard()
 }
 
 function isWinnerForComputer() {
@@ -150,12 +190,13 @@ function isWinnerForComputer() {
             arrayForComputer[4] == arrayForComputer[6])
     ) {
         displayWinnerForComputer(`${currentSymbolForComputer}`);
-        return false;
+        return true;
     } else {
         if (!arrayForComputer.includes(undefined)) {
             displayDrawForComputer();
+            return true;
         }
-        return true;
+        return false
     }
 }
 function brainOfComputer() {
@@ -309,7 +350,6 @@ function brainOfComputer() {
 
 function getDivValueForComputer(ComputerDiv) {
     let number = Math.floor(Math.random() * 9);
-    isWinnerForComputer();
     if (ComputerDiv) {
         if (ComputerDiv.textContent != "") return;
         if (currentSymbolForComputer == "O") {
@@ -318,31 +358,23 @@ function getDivValueForComputer(ComputerDiv) {
             currentSymbolForComputer = "X";
         }
     }
-    isWinnerForComputer();
+    if(isWinnerForComputer() == true){
+        return ;
+    }
     setTimeout(() => {
-        if (isWinnerForComputer()) {
-            if (arrayForComputer[number] == undefined || null) {
-                if (computerCol[number].textContent == "") {
-                    if (typeof brainOfComputer() == "number") {
-                        computerPushNumber = brainOfComputer();
-                        computerCol[brainOfComputer()].textContent = "O";
-                        arrayForComputer[computerPushNumber] = "O";
-                        currentSymbolForComputer = "O";
-                        console.log(arrayForComputer);
-                        console.log("inside");
-                    } else {
-                        computerCol[number].textContent = "O";
-                        arrayForComputer[number] = "O";
-                        currentSymbolForComputer = "O";
-                        number;
-                        console.log(arrayForComputer);
-                    }
-                    isWinnerForComputer();
+        if (arrayForComputer[number] == undefined || null) {
+            if (computerCol[number].textContent == "") {
+                if (typeof brainOfComputer() == "number") {
+                    computerPushNumber = brainOfComputer();
+                    computerCol[brainOfComputer()].textContent = "O";
+                    arrayForComputer[computerPushNumber] = "O";
+                    currentSymbolForComputer = "O";
                 } else {
-                    if (arrayForComputer.includes(undefined)) {
-                        getDivValueForComputer();
-                    }
-                    return;
+                    computerCol[number].textContent = "O";
+                    arrayForComputer[number] = "O";
+                    currentSymbolForComputer = "O";
+                    number;
+                    console.log(arrayForComputer);
                 }
             } else {
                 if (arrayForComputer.includes(undefined)) {
@@ -350,15 +382,20 @@ function getDivValueForComputer(ComputerDiv) {
                 }
                 return;
             }
+        } else {
+            if (arrayForComputer.includes(undefined)) {
+                getDivValueForComputer();
+            }
+            return;
         }
+
         isWinnerForComputer();
     }, 500);
 }
 
 function restartGameForComputer() {
-    currentSymbol = currentSelectedPlayer;
-    arrayForComputer.fill(undefined);
-    document
-        .querySelectorAll(".col-1")
-        .forEach((value) => (value.textContent = ""));
+    currentSymbolForComputer = "O"; 
+    clearBoard();
+    computerGame.classList.remove("hide");
+    resultPage.classList.add("hide");
 }

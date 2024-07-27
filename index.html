@@ -9,9 +9,24 @@
     <title>Tic Tac Toe Game</title>
 </head>
 <body>
+    <div class="sub-img"></div>
     <h1><img class="game-img" src="./img/tic-tac-toe.png" alt="" width="25">Tic Tac T<img class="latter-img" src="./img/0.png" alt="" width="30">e</h1>
     <div class="container">
         <div class="main">
+            <div class="score-main">
+                <div>
+                    <h3>Score X </h3>
+                    <p class="manual-score-x">0</p>
+                </div>
+                <div>
+                    <h3>Score O </h3>
+                    <p class="manual-score-o">0</p>
+                </div>
+                <div>
+                    <h3>Draw </h3>
+                    <p class="manual-score-draw">0</p>
+                </div>
+            </div>
             <div class="row">
                 <div id="0" onclick="getDivValue(this)" class="col"></div>
                 <div id="1" onclick="getDivValue(this)" class="col"></div>
@@ -41,7 +56,21 @@
         <!-- computer -->
 
 
-        <div class="ganrate-2 hide">
+        <div class="generate hide">
+            <div class="score-main">
+                <div>
+                    <h3>Score X </h3>
+                    <p class="score-x-for-player">0</p>
+                </div>
+                <div>
+                    <h3>Computer</h3>
+                    <p class="score-for-computer">0</p>
+                </div>
+                <div>
+                    <h3>Draw </h3>
+                    <p class="score-draw-for-computer">0</p>
+                </div>
+            </div>
             <div class="row-1">
                 <div id="0" onclick="getDivValueForComputer(this)" class="col-1"></div>
                 <div id="1" onclick="getDivValueForComputer(this)" class="col-1"></div>
